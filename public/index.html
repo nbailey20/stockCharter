@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StockTrack</title>
+        <link rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css' />
+        <link rel="stylesheet" href="/public/css/main.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type='text/javascript' src="/controllers/chartHandler.js"></script> 
+    </head>
+    
+    <body>
+        <h1>StockTrack</h1>
+        <div>
+            <p id="loading-text">Stock data currently loading...</p>
+        </div>
+        <div id="chart_div"></div>
+        <div class="companies">
+            <input id="company-input" type='text' placeholder="Enter stock abbr. separated by space">
+            <button id="updateChart" class="btn btn-primary company-submit">GO</button>
+        </div>
+    </body>
+</html>

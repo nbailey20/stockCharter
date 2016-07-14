@@ -1,0 +1,19 @@
+h1 {
+    color: red;
+    text-align: center;
+    margin-top: 50px;
+}
+#loading-text {
+    text-align: center;
+    margin-top: 50px;
+    font-family: cursive;
+    font-size: 25px;
+}
+#chart_div {
+    width: 82%;
+    margin-left: 9%;
+}
+#company-input {
+    margin-left: 35%;
+    width: 30%;
+}
