@@ -66,7 +66,8 @@ function drawBasic() {
                         // case where both data sets have the data
                         if (dataArr[i][0] == item[0]) {
                             item.push(dataArr[i][1]);
-                            i++;
+                            if (i < dataArr.length-1)
+                                i++;
                         }
                         else {
                             var chartAfter = compareDate(item[0], dataArr[i][0]);
@@ -76,18 +77,25 @@ function drawBasic() {
                             }
                              //case where chartArr doesn't have data, skip extra entry(s) in dataArr;
                             else {
-                                while (compareDate(dataArr[i][0], item[0])) {
-                                    i++;
+                                if (i == dataArr.length-1)
+                                    item.push(dataArr[i][1]);
+                                else {
+                                    while (compareDate(dataArr[i][0], item[0])) {
+                                        i++;
+                                    }
+                                    item.push(dataArr[i][1]);
                                 }
-                                item.push(dataArr[i][1]);
                             }
                         }
                     });
                 }
                 
                 if (companies[companies.length-1] == element) {
+                    
                     stocks.addRows(chartArr.reverse());
                     var options = {
+                        height: 500,
+                        backgroundColor: "darkgray",
                         selectionMode: 'multiple',
                         focusTarget: 'category',
                         vAxis: {

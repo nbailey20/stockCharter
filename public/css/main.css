@@ -1,5 +1,9 @@
+.main-background {
+    background-color: gray;
+}
+
 h1 {
-    color: red;
+    color: purple;
     text-align: center;
     margin-top: 50px;
 }
@@ -12,8 +16,10 @@ h1 {
 #chart_div {
     width: 82%;
     margin-left: 9%;
+    height: 50%;
 }
 #company-input {
     margin-left: 35%;
+    margin-top: 40px;
     width: 30%;
 }
