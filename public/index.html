@@ -7,6 +7,7 @@
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type='text/javascript' src="/controllers/chartHandler.js"></script> 
+        <script type='text/javascript' src="/controllers/companyBox.js"></script> 
     </head>
     
     <body class="fluid-container main-background">
@@ -14,10 +15,19 @@
         <div>
             <p id="loading-text">Stock data currently loading...</p>
         </div>
+        <div class="change-date row">
+            <div class="col-xs-6"></div>
+            <p class="col-xs-1 date-word">From</p>
+            <input id="fromdate" type="text" class="col-xs-2 date-input">
+            <p class="col-xs-1 date-word">To</p>
+            <input id="todate" type = "text" class="col-xs-2 date-input">
+        </div>
         <div id="chart_div"></div>
         <div class="companies">
-            <input id="company-input" type='text' placeholder="Enter stock abbr. separated by space">
+            
+            <input id="company-input" type='text' placeholder="Enter additional stock logo...">
             <button id="updateChart" class="btn btn-primary company-submit">GO</button>
         </div>
+        <div id="company-list"></div>
     </body>
 </html>

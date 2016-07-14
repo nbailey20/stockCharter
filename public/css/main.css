@@ -1,5 +1,6 @@
 .main-background {
     background-color: gray;
+    min-width: 1100px;
 }
 
 h1 {
@@ -8,18 +9,67 @@ h1 {
     margin-top: 50px;
 }
 #loading-text {
+    position: absolute;
     text-align: center;
     margin-top: 50px;
     font-family: cursive;
     font-size: 25px;
+    margin-left: 40%;
 }
 #chart_div {
-    width: 82%;
-    margin-left: 9%;
-    height: 50%;
+    width: 78%;
+    margin-left: 11%;
 }
 #company-input {
     margin-left: 35%;
     margin-top: 40px;
+    margin-bottom: 60px;
     width: 30%;
+}
+
+.company-row {
+    width: 78%;
+    margin-left: 11%;
+    margin-bottom: 40px;
+}
+.col-xs-3 {
+    height: 100px;
+    border: 2px solid lightgray;
+    margin-left: 6%;
+    overflow: hidden;
+}
+.company-name {
+    text-align: center;
+    font-size: 35px;
+    color: lightgray;
+    margin-top: -7px;
+}
+.exit {
+    margin-left: 94%;
+    background-color: gray;
+    color: lightgray;
+}
+.exit:hover span {
+    display: none;
+}
+.exit:hover:before {
+    content: "X";
+    color: maroon;
+}
+
+.change-date {
+    margin-top: 30px;
+}
+.date-word {
+    text-align: right;
+}
+.date-input {
+    text-align: center;
+    min-width: 125px;
+}
+#fromdate {
+    width: 7%;
+}
+#todate {
+    width: 7%;
 }
