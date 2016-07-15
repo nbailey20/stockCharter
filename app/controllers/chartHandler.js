@@ -33,7 +33,7 @@ $(document).ready(function () {
     
     
     $("#updateChart").on("click", function () {
-        var company = $("#company-input").val();
+        var company = $("#company-input").val().toUpperCase();
         if (update)
             socket.emit("dataupdated", {id: company});
         else {
@@ -81,10 +81,14 @@ function drawBasic() {
     var incorrectDate = false;
     var stocks = new google.visualization.DataTable();
     stocks.addColumn('string', 'X');
-    companies.forEach(function (i) {
-        stocks.addColumn('number', i);        
-    });
-
+    if (companies.length > 0) {
+        companies.forEach(function (i) {
+            stocks.addColumn('number', i);        
+        });
+    }
+    else {
+        stocks.addColumn('number', 'X');
+    }
     
     var startdate = $("#fromdate").val();
     if (!startdate.match(/([0-9]{4}-[0-9]{2}-[0-9]{2})/)) {
@@ -104,6 +108,19 @@ function drawBasic() {
     
     var chartArr;
     var badData = [];
+    var options = {
+        height: 500,
+        backgroundColor: "darkgray",
+        selectionMode: 'multiple',
+        focusTarget: 'category',
+        vAxis: {
+            title: '%'
+        },
+        hAxis: {
+            title: "Date",
+            textPosition: "none"
+        }
+    };
     companies.forEach(function (element) {
         var url = "https://www.quandl.com/api/v3/datasets/WIKI/" + element + ".json?column_index=4";
         url += "&start_date=" + startdate + "&end_date=" + enddate + "&collapse=daily&transformation=diff&api_key=vsBU_LCE8RLH9sMNJZgM";
@@ -117,10 +134,12 @@ function drawBasic() {
                 if (data.dataset.data.length === 0) {
                     badData.push(element);
                     badData.push(data.dataset.oldest_available_date);
-                    alert("Database only has stock values for " + badData[0] + " past " + badData[1] + ", please remove " + badData[0] + " or change the date range and try again!");
-                    return;
+                    badData.push(data.dataset.newest_available_date);
+                    var text = "Database only has stock values for " + badData[0] + " between " + badData[1];
+                    text += " and " + badData[2] + ", please remove " + badData[0] + " or change the date range and try again!";
+                    alert(text);
                 }
-                else if (badData.length == 2) {
+                else if (badData.length == 3) {
                     return;
                 }
                 else {
@@ -158,22 +177,9 @@ function drawBasic() {
                         });
                     }
                 }
-                    
+                
                 if (companies[companies.length-1] == element) {
                     stocks.addRows(chartArr.reverse());
-                    var options = {
-                        height: 500,
-                        backgroundColor: "darkgray",
-                        selectionMode: 'multiple',
-                        focusTarget: 'category',
-                        vAxis: {
-                            title: '%'
-                        },
-                        hAxis: {
-                            title: "Date",
-                            textPosition: "none"
-                        }
-                    };
                     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
                     chart.draw(stocks, options);
                     $("#loading-text").html("");
@@ -181,6 +187,11 @@ function drawBasic() {
             }
         });
     });
+    if (companies.length === 0) {
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(stocks, options);
+        $("#loading-text").html("");
+    }
 }
 
 

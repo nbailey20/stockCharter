@@ -7,6 +7,7 @@ h1 {
     color: maroon;
     text-align: center;
     margin-top: 50px;
+    font-family: 'Montserrat';
 }
 #loading-text {
     position: absolute;
@@ -72,4 +73,18 @@ h1 {
 }
 #todate {
     width: 7%;
+}
+
+.footer {
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.author {
+    color: navy;
+}
+.author:hover {
+  color: purple;
 }
