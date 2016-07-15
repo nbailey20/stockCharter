@@ -4,17 +4,17 @@
 }
 
 h1 {
-    color: purple;
+    color: maroon;
     text-align: center;
     margin-top: 50px;
 }
 #loading-text {
     position: absolute;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 170px;
     font-family: cursive;
     font-size: 25px;
-    margin-left: 40%;
+    margin-left: 42%;
 }
 #chart_div {
     width: 78%;
@@ -58,7 +58,7 @@ h1 {
 }
 
 .change-date {
-    margin-top: 30px;
+    margin-top: 70px;
 }
 .date-word {
     text-align: right;

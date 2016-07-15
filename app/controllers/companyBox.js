@@ -1,13 +1,28 @@
 'use strict';
 
+var update = true;
+
 $(document).ready(function () {
    setTimeout(displayCompanies, 500);
+   
+   var socket = io.connect('/');
+    socket.on('dataremoved', function (data) {
+        update = false;
+        $("#" + data.id).click();
+    });
    
    $("#updateChart").on("click", function () {
       displayCompanies(); 
    });
    
    $("#company-list").on("click", function (event) {
+       if (update) {
+            socket.emit("dataremoved", {id: event.target.id});
+       }
+        else {
+            update = true;
+        }
+       
         var name = event.target.id; 
         var index = companies.indexOf(name);
         if (index > -1) {
